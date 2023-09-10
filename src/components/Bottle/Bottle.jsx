@@ -1,7 +1,8 @@
-import React from 'react';
+import PropTypes from 'prop-types'; 
+// import React from 'react';
 
-const Bottle = ({bottle}) => {
-  console.log(bottle);
+const Bottle = ({bottle, handlePurchase}) => {
+  // console.log(bottle);
   const {name, price, ratings, img} = bottle;
   return (
     <div className='border-2 border-purple-600 rounded-xl m-5 p-4'>
@@ -9,10 +10,15 @@ const Bottle = ({bottle}) => {
       <h3>Bottle Name: {name}</h3>
       <h3>Bottle Price: ${price}</h3>
       <h3>Bottle Rating: {ratings}</h3>
-      <button className='btn'>Add to Cart</button>
+      <button onClick={()=>handlePurchase(bottle)} className='btn'>Add to Cart</button>
       
     </div>
   );
 };
 
+
+Bottle.propTypes = {
+  bottle:PropTypes.object.isRequired,
+  handlePurchase:PropTypes.func.isRequired
+}
 export default Bottle;
